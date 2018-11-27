@@ -38,7 +38,7 @@ class RoomsController < ApplicationController
   end
 
   def myrooms
-    @myrooms = Room.where(params[:user_id])
+    @myrooms = Room.where(params[current_user.id])
   end
 
   def search

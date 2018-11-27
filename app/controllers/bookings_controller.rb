@@ -1,7 +1,15 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :destroy]
   def index
-    @bookings = Booking.all
+    @all_bookings = Booking.all
+    @myrooms = Room.where(params[current_user.id])
+    @my_hostings = []
+    @myrooms.each do |room|
+      room.bookings.each do |booking|
+        @my_hostings << booking
+      end
+    end
+    @my_bookings = Booking.where(params[current_user.id])
   end
 
   def show

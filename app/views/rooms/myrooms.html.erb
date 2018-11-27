@@ -1,0 +1,9 @@
+<h1>My Rooms</h1>
+<% @myrooms.each do |room| %>
+  <% room.room_images.each do |i| %>
+    <%= cl_image_tag i.image, height: 300, width: 400, crop: :fill %>
+  <% end %>
+
+  <p><%= room.description %></p>
+<% end %>
+
