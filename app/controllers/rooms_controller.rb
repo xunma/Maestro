@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :bookings, :images]
 
   def index
     @rooms = Room.all
@@ -39,6 +39,10 @@ class RoomsController < ApplicationController
 
   def search
     @rooms = Room.where(room_params)
+  end
+
+  def bookings
+    @bookings = Booking.where(@room)
   end
 
   private
