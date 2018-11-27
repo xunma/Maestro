@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :first_name, uniqueness: { scope: :last_name }, presence: true
   validates :city, presence: true
+  mount_uploader :avatar, PhotoUploader
 end
