@@ -1,7 +1,7 @@
 <%= simple_form_for(@room) do |f| %>
   <%=  f.input :instrument_type, collection:['Piano', 'Drums', 'Harp', 'Cello', 'Guitar'] %>
   <%= f.input :description %>
-  <%= f.input :location %>
+  <%= f.input :location, collection:['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'] %>
   <%= f.input :price %>/hr
   <%= f.file_field :image, multiple: true %>
   <%= f.button :submit, 'Save' %>

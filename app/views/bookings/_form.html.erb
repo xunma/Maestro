@@ -1,0 +1,8 @@
+<%= simple_form_for(@booking) do |f| %>
+
+  <%= f.input :start_time, as: :datetime, discard_year: true, minute_step: 10 %>
+
+   <%= f.input :end_time, as: :datetime,  discard_year: true, minute_step: 10 %>
+
+  <%= f.button :submit, 'Save' %>
+<% end %>
