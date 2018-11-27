@@ -7,6 +7,15 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.input :first_name %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.input :last_name %>
+            </div>
+          </div>
+          <%= f.input :city %>
           <%= f.input :email,
                       required: true,
                       autofocus: true ,
