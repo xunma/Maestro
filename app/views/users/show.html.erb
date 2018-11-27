@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <% if @user.avatar.url != nil %>
+        <%= cl_image_tag @user.avatar.url(:profile_image) %>
+      <% else %>
+        <i class="fas fa-user" id="profile_icon_large"></i>
+      <% end %>
+      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+      <p><strong>Current city:</strong> <%= @user.city %></p>
+      <p><strong>Email address:</strong> <%= @user.email %></p>
+      <%= link_to 'Edit Profile', edit_user_registration_path %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  get 'users/show'
+  devise_for :users, :controllers => { :registrations => :registrations }
 
   root to: 'pages#home'
 
@@ -17,4 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [:index, :show, :destroy]
+
+  get '/profile', to: 'users#show', as: 'profile'
 end
