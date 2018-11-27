@@ -3,5 +3,6 @@
   <%= f.input :description %>
   <%= f.input :location %>
   <%= f.input :price %>/hr
-  <%= f.button :submit, 'Save and continue >' %>
+  <%= f.file_field :image, multiple: true %>
+  <%= f.button :submit, 'Save' %>
 <% end %>

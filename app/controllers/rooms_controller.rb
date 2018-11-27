@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :set_room, only: [:show, :edit, :update, :destroy, :bookings, :images]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :bookings]
 
   def index
     @rooms = Room.all
@@ -15,8 +15,12 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
+    @room.user = current_user
     if @room.save
-      redirect_to room_path(@room)
+      params[:room][:image].each do |i|
+        @room.room_images.create(image: i)
+      end
+      redirect_to room_path(@room), notice: 'Room successfully created.'
     else
       render :new
     end
@@ -52,6 +56,6 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:email, :instrument_type, :location, :price, :user_id)
+    params.require(:room).permit(:instrument_type, :description, :location, :price, room_images_attributes: [:id, :room_id, :image])
   end
 end
