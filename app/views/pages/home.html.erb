@@ -1,2 +1,36 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<html>
+  <body>
+    <div class="home_search_wrapper">
+      <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1484972759836-b93f9ef2b293?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d67b595c38bb2dfe8860ac03ea00d5f&auto=format&fit=crop&w=800&q=60');">
+        <div class="banner-content">
+          <h1>Be a Maestro</h1>
+          <div class="dropdown-l">
+            <button class="dropbtn">Where?</button>
+            <div class="dropdown-content">
+              <a href="#">Shanghai</a>
+              <a href="#">Seuol</a>
+              <a href="#">Chengdu</a>
+              <a href="#">Beijing</a>
+              <a href="#">Hong Kong</a>
+              <a href="#">Barcelona</a>
+            </div>
+          </div>
+          <%= simple_form_for :search, method: "get" do |f| %>
+            <%= f.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :end_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.button :submit, "Go", class: "btn btn-primary" %>
+          <% end %>
+          <div class="dropdown-i">
+            <button class="dropbtn">Instrument?</button>
+            <div class="dropdown-content">
+              <a href="#">Piano</a>
+              <a href="#">Drums</a>
+              <a href="#">Bass</a>
+            </div>
+          </div>
+          <h2>Find your best space for music</h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
