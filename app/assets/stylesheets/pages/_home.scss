@@ -10,8 +10,8 @@ h1, h2, h3 {
   margin: 10px;
 }
 
-h1 {
-  margin-bottom: 350px;
+.title {
+  margin-bottom: 110px;
   font-size: 500%;
   text-decoration: overline wavy blue;
 }
@@ -38,24 +38,31 @@ p {
   padding: 25px 50px 75px 100px;
 }
 
-// .btn-green {
-//   color: white;
-//   padding: 25px 35px;
-//   border-radius: 10px;
-//   font-weight: bold;
-//   font-size: 20px;
-//   background: blue;
-//   transition: background 0.3s ease;
-//   text-decoration: none;
-//   margin-right: 0px;
-// }
+.btn-primary {
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  background: blue;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  margin-bottom: 10px;
+  border: none;
+}
 
-// .btn-green:hover {
-//   background: #3ac162;
-//   text-decoration: none;
-//   color: white;
-//   transition: background 0.5s ease;
-// }
+.btn-primary:hover {
+  background: purple;
+  text-decoration: none;
+  color: white;
+  transition: background 0.5s ease;
+}
+
+.calendar {
+  font-weight: bold;
+  font-size: 20px;
+  max-width: 350px;
+  margin-left: 140px;
+}
 
 /* Dropdown Button */
 .dropbtn {
@@ -108,11 +115,11 @@ p {
 .dropdown-i:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown-i:hover .dropbtn {background-color: #3e8e41;}
+.dropdown-i:hover .dropbtn {background-color: purple;}
 
 /* Show the dropdown menu on hover */
 .dropdown-l:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown-l:hover .dropbtn {background-color: #3e8e41;}
+.dropdown-l:hover .dropbtn {background-color: purple;}
 
