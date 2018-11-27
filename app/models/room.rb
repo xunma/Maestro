@@ -5,6 +5,7 @@ class Room < ApplicationRecord
   validates :price, presence: true, allow_blank: false
   validates :user_id, presence: true, allow_blank: false
   has_many :room_images, dependent: :destroy
+  accepts_nested_attributes_for :room_images
   has_many :bookings, dependent: :destroy
   belongs_to :user
 end
