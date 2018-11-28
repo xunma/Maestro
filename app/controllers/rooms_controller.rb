@@ -69,6 +69,7 @@ class RoomsController < ApplicationController
         lat: room.latitude
         # infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { flat: flat }) }
       }
+    end
   end
 
   def bookings
