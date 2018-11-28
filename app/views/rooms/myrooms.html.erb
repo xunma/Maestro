@@ -1,6 +1,7 @@
 <div class="container dashboard">
   <div class="dashboard-main-header">
     <h1>Rooms I'm Hosting</h1>
+    <%= link_to "Create a new room", new_room_path, class: "btn btn-primary btn-home" %>
 
     <% if @myrooms == [] %>
     <p>You are not currently hosting any rehearsals...</p>
