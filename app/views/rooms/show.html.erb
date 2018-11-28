@@ -1,5 +1,13 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<div class="container room-container">
 <% @room.room_images.each do |i| %>
 <%= cl_image_tag i.image, height: 300, width: 400, crop: :fill %>
 <% end %>
+<h1>Your <%= @room.instrument_type %> in <%= @room.location %></h1><br>
+<%= @room.description %><br>
+<h3><i class="fas fa-map-marker-alt"></i> <%= @room.location %></h3><br>
+<%= @room.price %>/hour(<%= @room.currency %>)<br>
+<%= link_to 'Edit', edit_room_path(@room) %>
+<%= link_to 'Delete', method: :delete %>
+</div>
+
+
