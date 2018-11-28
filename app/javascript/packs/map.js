@@ -50,5 +50,5 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     container: 'map',
     style: 'mapbox://styles/hunterian/cjp14ug6x0v2e2srm82s4jjjn'
   });
-}
+};
 
