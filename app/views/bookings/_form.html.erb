@@ -1,0 +1,6 @@
+<%= simple_form_for([@room, @booking]) do |f| %>
+   <%= f.input :start_time, placeholder: "Start time", as: :string, required: false, input_html: {class: "datepicker"} %>
+   <%= f.input :end_time, placeholder: "End time", as: :string, required: false, input_html: {class: "datepicker"} %>
+
+  <%= f.button :submit, 'Send a booking request now!' %>
+<% end %>
