@@ -4,6 +4,15 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
+    @flats = Flat.where.not(latitude: nil, longitude: nil)
+
+    @markers = @flats.map do |flat|
+      {
+        lng: flat.longitude,
+        lat: flat.latitude,
+        infoWindow: { content: render_to_string(partial: "/flats/map_window", locals: { flat: flat }) }
+      }
+    end
   end
 
   def show
