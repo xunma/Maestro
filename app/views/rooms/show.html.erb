@@ -4,8 +4,8 @@
 <% end %>
 <h1>Your <%= @room.instrument_type %> in <%= @room.location %></h1><br>
 <%= @room.description %><br>
-<h3><i class="fas fa-map-marker-alt"></i> <%= @room.location %></h3><br>
-<%= @room.price %>/hour(<%= @room.currency %>)<br>
+<h4><i class="fas fa-map-marker-alt"></i> <%= @room.location %></h4><br>
+<h4>Price: <%= @room.price %>/hour(<%= @room.currency %>)</h4><br>
 <%= link_to 'Edit', edit_room_path(@room) %>
 <%= link_to 'Delete', method: :delete %>
 </div>
