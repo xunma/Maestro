@@ -10,9 +10,9 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Search Rehearsal Rooms", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "All Rehearsal Rooms", rooms_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Spaces I'm Hosting", my_rooms_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Search", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Browse", rooms_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Hosting", my_rooms_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Dashboard", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
