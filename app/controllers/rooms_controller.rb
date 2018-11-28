@@ -52,7 +52,13 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.where(room_params)
+    @rooms = []
+    Room.where(instrument_type: room_params[:instrument_type]).each do |room|
+      @rooms << room
+    end
+    Room.where(location: room_params[:location]).each do |room|
+      @rooms << room
+    end
   end
 
   def bookings
