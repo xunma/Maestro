@@ -32,8 +32,10 @@ class RoomsController < ApplicationController
   def update
     @room.update(room_params)
     if @room.save
-      params[:room][:image].each do |i|
-        @room.room_images.create(image: i)
+      if params[:room][:image]
+        params[:room][:image].each do |i|
+          @room.room_images.create(image: i)
+        end
       end
       redirect_to room_path(@room), notice: 'Room successfully updated.'
     else
@@ -50,14 +52,23 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.where(room_params).where.not(latitude: nil, longitude: nil)
-    @markers = @rooms.map do |room|
+    @rooms = []
+    Room.where(instrument_type: room_params[:instrument_type]).each do |room|
+      @rooms << room
+    end
+    Room.where(location: room_params[:location]).each do |room|
+      @rooms << room
+    end
+    @map_rooms = []
+    @rooms.each do |room|
+      @map_rooms << room if room.latitude != nil && room.longitude != nil
+    end
+    @markers = @map_rooms.map do |room|
       {
         lng: room.longitude,
         lat: room.latitude
         # infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { flat: flat }) }
       }
-    end
   end
 
   def bookings

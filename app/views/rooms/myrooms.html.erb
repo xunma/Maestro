@@ -1,6 +1,7 @@
 <div class="container dashboard">
   <div class="dashboard-main-header">
     <h1>Rooms I'm Hosting</h1>
+    <%= link_to "Create a new room", new_room_path, class: "btn btn-primary btn-home" %>
 
     <% if @myrooms == [] %>
     <p>You are not currently hosting any rehearsals...</p>
@@ -12,7 +13,7 @@
         <% @myrooms.each do |room| %>
           <div class="col-xs-8 col-xs-offset-2">
             <div class="card">
-              <% if room.room_images == nil %>
+              <% if room.room_images.count > 0 %>
                 <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(room.room_images[0].image) %>);">
                 </div>
               <% else %>
