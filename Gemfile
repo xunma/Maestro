@@ -34,3 +34,4 @@ group :development, :test do
 end
 
 gem 'bootstrap-datepicker-rails'
+gem "geocoder"
