@@ -4,15 +4,6 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
-    @flats = Flat.where.not(latitude: nil, longitude: nil)
-
-    @markers = @flats.map do |flat|
-      {
-        lng: flat.longitude,
-        lat: flat.latitude,
-        infoWindow: { content: render_to_string(partial: "/flats/map_window", locals: { flat: flat }) }
-      }
-    end
   end
 
   def show
@@ -59,7 +50,14 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.where(room_params)
+    @rooms = Room.where(room_params).where.not(latitude: nil, longitude: nil)
+    @markers = @rooms.map do |room|
+      {
+        lng: room.longitude,
+        lat: room.latitude
+        # infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { flat: flat }) }
+      }
+    end
   end
 
   def bookings
