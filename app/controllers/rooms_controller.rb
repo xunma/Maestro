@@ -63,12 +63,15 @@ class RoomsController < ApplicationController
     @rooms.each do |room|
       @map_rooms << room if room.latitude != nil && room.longitude != nil
     end
+
     @markers = @map_rooms.map do |room|
       {
         lng: room.longitude,
-        lat: room.latitude
-        # infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { flat: flat }) }
+        lat: room.latitude,
+        infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { room: room }) }
       }
+    end
+
   end
 
   def bookings
