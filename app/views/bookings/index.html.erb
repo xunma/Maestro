@@ -8,7 +8,7 @@
       <% @my_hostings.each do |booking| %>
         <div class="col-xs-6 col-sm-4">
           <div class="card">
-            <% if booking.room.room_images == nil %>
+            <% if booking.room.room_images.count > 0 %>
               <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(booking.room.room_images[0].image) %>);">
               </div>
             <% else %>
@@ -49,7 +49,7 @@
       <% @my_bookings.each do |booking| %>
         <div class="col-xs-6 col-sm-4">
           <div class="card">
-            <% if booking.room.room_images == nil %>
+            <% if booking.room.room_images.count > 0 %>
               <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(booking.room.room_images[0].image) %>);">
               </div>
             <% else %>
