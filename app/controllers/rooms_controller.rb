@@ -31,6 +31,14 @@ class RoomsController < ApplicationController
 
   def update
     @room.update(room_params)
+    if @room.save
+      params[:room][:image].each do |i|
+        @room.room_images.create(image: i)
+      end
+      redirect_to room_path(@room), notice: 'Room successfully updated.'
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -56,6 +64,6 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:instrument_type, :description, :location, :price, room_images_attributes: [:id, :room_id, :image])
+    params.require(:room).permit(:instrument_type, :description, :location, :price, :currency, room_images_attributes: [:id, :room_id, :image])
   end
 end
