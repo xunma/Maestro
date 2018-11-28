@@ -10,7 +10,8 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Book a Rehearsal", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Search Rehearsal Rooms", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "All Rehearsal Rooms", rooms_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Spaces I'm Hosting", my_rooms_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Dashboard", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
