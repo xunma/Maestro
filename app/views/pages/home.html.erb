@@ -4,7 +4,7 @@
       <h1 class="title">Be a Maestro</h1>
       <div class="home_form">
         <%= simple_form_for :room, url: search_rooms_path, wrapper: :inline_form, html: {class: 'form-inline'}, method: "get" do |f| %>
-          <%= f.input :instrument_type, label: "Instrument", collection: ['Guitar', 'Piano', 'Drums', 'Harp'], prompt: "Find instrument", input_html: {class: "dropbtn"} %>
+          <%= f.input :instrument_type, label: "Instrument", collection: ['Guitar', 'Cello', 'Piano', 'Drums', 'Harp'], prompt: "Find instrument", input_html: {class: "dropbtn"} %>
           <%= f.input :location, collection: ['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'], prompt: "Location", input_html: {class: "dropbtn"} %>
           <%= f.input :start_time, placeholder: "Start time", as: :string, required: false, input_html: {class: "datepicker"} %>
           <%= f.input :end_time, placeholder: "End time", as: :string, required: false, input_html: {class: "datepicker"} %>

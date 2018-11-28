@@ -28,11 +28,11 @@ dean.save
 10.times do
   location = ['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'].sample
   addresses = {
-    'Shanghai'=> 'No 222 Hubin Road, Shanghai',
-    'Chengdu' => 'No 49 Hongjixin Road, Chengdu',
+    'Shanghai'=> '222 Hubin Road, Shanghai',
+    'Chengdu' => 'Tianfu Square, Chengdu',
     'Beijing' => 'Sanlitun, Beijing',
-    'Barcelona' => 'Sagarada Familia, Barcelona',
-    'Hong Kong' => '88 Red Hill Road, Tai Tam, Hong Kong',
+    'Barcelona' => 'Sagrada Familia, Barcelona',
+    'Hong Kong' => '88 Red Hill Road, Hong Kong',
     'Seoul' => 'Gyeongbokgung, Seoul'
   }
   address = addresses[location]

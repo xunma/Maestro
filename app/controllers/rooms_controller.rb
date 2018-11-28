@@ -71,7 +71,6 @@ class RoomsController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { room: room }) }
       }
     end
-
   end
 
   def bookings
@@ -85,6 +84,6 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:instrument_type, :description, :location, :price, :currency, room_images_attributes: [:id, :room_id, :image])
+    params.require(:room).permit(:instrument_type, :description, :location, :price, :address, :currency, room_images_attributes: [:id, :room_id, :image])
   end
 end

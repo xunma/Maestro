@@ -8,7 +8,10 @@
   <%= f.input :description %>
 </div>
 <div class="form-row form-group">
-  <%= f.input :location, collection:['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'] %>
+  <%= f.input :location, label: "city", collection:['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'] %>
+</div>
+<div class="form-row form-group">
+  <%= f.input :address %>
 </div>
 <div class="form-row form-group col-md-6">
   <%= f.input :price, label: "Price per hour"%>

@@ -4,6 +4,8 @@
   </div>
   <div class="dashboard-subheading">
     <h3>Rehearsals where I am the host:</h3>
+
+    <% if @my_hostings.count > 0 %>
     <div class="row">
       <% @my_hostings.each do |booking| %>
         <div class="col-xs-6 col-sm-4">
@@ -17,7 +19,7 @@
             <% end %>
 
             <div class="card-description">
-              <h3>Play the <%= booking.room.instrument_type %></h3>
+              <h3><%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
               <p>Location: <%= booking.room.location %></p>
               <p>Start time: <%= booking.start_time.strftime("%b %e, %l:%M %p") %></p>
               <p>End time: <%= booking.end_time.strftime("%b %e, %l:%M %p") %></p>
@@ -41,10 +43,14 @@
         </div>
       <% end %>
     </div>
+    <% else %>
+    <p>🥺 You don't have any rehearsals to host at the moment.</p>
+    <% end %>
   </div>
 
   <div class="dashboard-subheading">
     <h3>Rehearsals I have booked:</h3>
+    <% if @my_bookings.count > 0 %>
     <div class="row">
       <% @my_bookings.each do |booking| %>
         <div class="col-xs-6 col-sm-4">
@@ -58,7 +64,7 @@
             <% end %>
 
             <div class="card-description">
-              <h3>Play the <%= booking.room.instrument_type %></h3>
+              <h3><%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
               <p>Host: <%= User.find(booking.room.user_id).first_name %></p>
               <p>Location: <%= booking.room.location %></p>
               <p>Start time: <%= booking.start_time.strftime("%b %e, %l:%M %p") %></p>
@@ -83,5 +89,9 @@
         </div>
       <% end %>
     </div>
+    <% else %>
+    <p>😳 You don't have any upcoming rehearsals to go.</p>
+    <% end %>
+
   </div>
 </div>
