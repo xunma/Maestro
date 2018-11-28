@@ -56,7 +56,7 @@ if (mapElement) { // only build a map if there's a div#map to inject into
   }
   const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/hunterian/cjp14ug6x0v2e2srm82s4jjjn'
+    style: 'mapbox://styles/hunterian/cjp1c5pil11vo2sp64lemb6w8'
   });
 
 
