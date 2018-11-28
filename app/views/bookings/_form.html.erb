@@ -1,8 +1,6 @@
-<%= simple_form_for(@booking) do |f| %>
+<%= simple_form_for([@room, @booking]) do |f| %>
+   <%= f.input :start_time, placeholder: "Start time", as: :string, required: false, input_html: {class: "datepicker"} %>
+   <%= f.input :end_time, placeholder: "End time", as: :string, required: false, input_html: {class: "datepicker"} %>
 
-  <%= f.input :start_time, as: :datetime, discard_year: true, minute_step: 10 %>
-
-   <%= f.input :end_time, as: :datetime,  discard_year: true, minute_step: 10 %>
-
-  <%= f.button :submit, 'Save' %>
+  <%= f.button :submit, 'Send a booking request now!' %>
 <% end %>
