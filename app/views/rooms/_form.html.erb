@@ -1,8 +1,26 @@
 <%= simple_form_for(@room) do |f| %>
-  <%=  f.input :instrument_type, collection:['Piano', 'Drums', 'Harp', 'Cello', 'Guitar'] %>
+
+<div class="col-md-4">
+<div class="form-row form-group">
+  <%= f.input :instrument_type, collection:['Piano', 'Drums', 'Harp', 'Cello', 'Guitar'] %>
+</div>
+<div class="form-row form-group">
   <%= f.input :description %>
+</div>
+<div class="form-row form-group">
   <%= f.input :location, collection:['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'] %>
-  <%= f.input :price %>/hr
+</div>
+<div class="form-row form-group col-md-6">
+  <%= f.input :price, label: "Price per hour"%>
+</div>
+<div class="form-row form-group col-md-6">
+  <%= f.input :currency, collection:['Euros', 'HK Dollars', 'Chinese Yuan', 'Won'] %>
+</div>
+<div class="form-row form-group">
   <%= f.file_field :image, multiple: true %>
-  <%= f.button :submit, 'Save' %>
+</div>
+
+  <%= f.button :submit, 'Save', class: "btn btn-primary home-button" %>
+
+</div>
 <% end %>
