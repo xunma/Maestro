@@ -17,7 +17,8 @@
               <% end %>
 
               <div class="card-description">
-                <h3>Play the <%= room.instrument_type %></h3>
+                <h3><%= room.instrument_type %> in <%= room.location%></h3>
+                <p><strong><%= room.description %></strong></p>
                 <p>Host: <%= User.find(room.user_id).first_name %></p>
                 <p>Location: <%= room.location %></p>
                 <p>Rental price:
