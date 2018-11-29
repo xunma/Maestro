@@ -5,7 +5,7 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.references :room, foreign_key: true
       t.date :start_time
       t.date :end_time
-      t.string :status
+      t.string :status, default: 'pending'
 
       t.timestamps
     end
