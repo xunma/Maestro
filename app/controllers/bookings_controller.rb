@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :destroy]
+  before_action :set_booking, only: [:show, :destroy, :update]
   def index
     @all_bookings = Booking.all
     @myrooms = Room.where(user_id: current_user.id)
@@ -23,7 +23,6 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @room = Room.find(params[:room_id])
-    @booking.status = 'Pending'
     @booking.user = current_user
     @booking.room = @room
     if @booking.save
@@ -35,6 +34,12 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    redirect_to bookings_path
+  end
+
+  def update
+    @booking.status = params[:status]
+    @booking.save
     redirect_to bookings_path
   end
 

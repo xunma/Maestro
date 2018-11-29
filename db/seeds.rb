@@ -25,23 +25,38 @@ dean = User.new(email: 'dean@mail.com', first_name: 'Dean', last_name: 'Wheeler'
 dean.save
 
 #creating rooms w/o images
-10.times do
-  location = ['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'].sample
-  addresses = {
-    'Shanghai'=> '222 Hubin Road, Shanghai',
-    'Chengdu' => 'Tianfu Square, Chengdu',
-    'Beijing' => 'Sanlitun, Beijing',
-    'Barcelona' => 'Sagrada Familia, Barcelona',
-    'Hong Kong' => '88 Red Hill Road, Hong Kong',
-    'Seoul' => 'Gyeongbokgung, Seoul'
-  }
-  address = addresses[location]
 
-  instrument = ['Piano', 'Drums', 'Harp', 'Cello', 'Guitar'].sample
-  user = User.all.sample
-  description = ['Great', 'Nice sound texture', 'delicate', '💕', 'Good sound proof', 'Has recording geers', 'Available 24 hours a day', 'Historical'].sample
-  price = rand(10..30)
-  room = Room.new(location: location, address: address, instrument_type: instrument, description: description, price: price)
-  room.user = user
-  room.save
-end
+
+  a = [
+    {'Shanghai'=> '222 Hubin Road, Shanghai'},
+    {'Shanghai'=> 'Shanghai Disneyland, Shanghai'},
+    {'Chengdu' => 'Tianfu Square, Chengdu'},
+    {'Chengdu' => 'Jinli, Chengdu'},
+    {'Beijing' => 'Sanlitun, Beijing'},
+    {'Beijing' => 'Tiananmen Square, Beijing'},
+    {'Barcelona' => 'Sagrada Familia, Barcelona'},
+    {'Barcelona' => 'Le Wagon Barcelona, Barcelona'},
+    {'Hong Kong' => '88 Red Hill Road, Hong Kong'},
+    {'Hong Kong' => 'Hong Kong Disneyland, Hong Kong'},
+    {'Seoul' => 'Gyeongbokgung, Seoul'},
+    {'Seoul' => 'Incheon International Airport, Seoul'}
+  ]
+
+  a.each do |h|
+    instrument = ['Piano', 'Drums', 'Harp', 'Cello', 'Guitar'].sample
+    user = User.all.sample
+    description = ['Great', 'Nice sound texture', 'delicate', '💕', 'Good sound proof', 'Has recording geers', 'Available 24 hours a day', 'Historical'].sample
+    price = rand(10..30)
+    location = h.keys[0]
+    address = h.values[0]
+    room = Room.new(location: location, address: address, instrument_type: instrument, description: description, price: price, currency: 'Euro')
+    room.user = user
+    room.save
+  end
+
+
+
+
+
+
+
