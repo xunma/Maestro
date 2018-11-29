@@ -2,7 +2,7 @@
 
 <div >
 <div class="form-row form-group">
-  <%= f.input :instrument_type %>
+  <%= f.input :instrument_type, collection:['Piano', 'Drums', 'Harp', 'Cello', 'Guitar'] %>
 </div>
 <div class="form-row form-group">
   <%= f.input :description %>
