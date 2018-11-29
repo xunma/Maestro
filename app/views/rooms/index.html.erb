@@ -6,8 +6,8 @@
 
       <div class="map-form">
         <%= simple_form_for :room, url: rooms_path, wrapper: :inline_form, html: {class: 'form-inline'}, method: "get" do |f| %>
-          <%= f.input :instrument_type, label: "Instrument", collection: ['Guitar', 'Cello', 'Piano', 'Drums', 'Harp'], selected: "#{params[:room][:instrument_type] unless params[:room].nil?}", prompt: "Instrument", input_html: {class: "dropbtn", style: 'width: 40%'} %>
-          <%= f.input :location, collection: ['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'], selected: "#{params[:room][:location] unless params[:room].nil?}", prompt: "Location", input_html: {class: "dropbtn", style: 'width: 40%'} %>
+          <%= f.input :instrument_type, label: "Instrument", collection: ['Guitar', 'Cello', 'Piano', 'Drums', 'Harp', ''], selected: "#{params[:room][:instrument_type] unless params[:room].nil?}", prompt: "Instrument", input_html: {class: "dropbtn", style: 'width: 40%'} %>
+          <%= f.input :location, collection: ['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona', ''], selected: "#{params[:room][:location] unless params[:room].nil?}", prompt: "Location", input_html: {class: "dropbtn", style: 'width: 40%'} %>
           <%= f.button :submit, "Filter", class: "btn map-btn", style: 'width: 18%' %>
         <% end %>
       </div>
