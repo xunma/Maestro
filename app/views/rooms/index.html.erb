@@ -6,9 +6,9 @@
 
       <div class="map-form">
         <%= simple_form_for :room, url: rooms_path, wrapper: :inline_form, html: {class: 'form-inline'}, method: "get" do |f| %>
-          <%= f.input :instrument_type, label: "Instrument", collection: ['Guitar', 'Cello', 'Piano', 'Drums', 'Harp'], selected: "#{params[:room][:instrument_type] unless params[:room].nil?}", prompt: "Instrument", input_html: {class: "dropbtn", style: 'width: 300px'} %>
-          <%= f.input :location, collection: ['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'], selected: "#{params[:room][:location] unless params[:room].nil?}", prompt: "Location", input_html: {class: "dropbtn", style: 'width: 300px'} %>
-          <%= f.button :submit, "Filter", class: "btn map-button" %>
+          <%= f.input :instrument_type, label: "Instrument", collection: ['Guitar', 'Cello', 'Piano', 'Drums', 'Harp'], selected: "#{params[:room][:instrument_type] unless params[:room].nil?}", prompt: "Instrument", input_html: {class: "dropbtn", style: 'width: 40%'} %>
+          <%= f.input :location, collection: ['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'], selected: "#{params[:room][:location] unless params[:room].nil?}", prompt: "Location", input_html: {class: "dropbtn", style: 'width: 40%'} %>
+          <%= f.button :submit, "Filter", class: "btn map-btn", style: 'width: 18%' %>
         <% end %>
       </div>
 
@@ -18,28 +18,24 @@
 
       <% @rooms.each do |room| %>
         <div class="col-xs-6">
-          <div class="card">
-            <% if room.room_images.count > 0 %>
-              <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(room.room_images[0].image) %>);">
-              </div>
-            <% else %>
-              <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
-              </div>
-            <% end %>
+          <%= link_to room_path(room) do %>
+            <div class="card">
+              <% if room.room_images.count > 0 %>
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(room.room_images[0].image) %>);">
+                </div>
+              <% else %>
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
+                </div>
+              <% end %>
 
-            <div class="card-description">
-              <h3><%= room.instrument_type %> in <%= room.location%></h3>
-              <p><strong><%= room.description %></strong></p>
-              <p>Host: <%= User.find(room.user_id).first_name %></p>
-              <p>Location: <%= room.location %></p>
-              <p>Rental price: <%= room.currency %> <%= room.price %>/hr</p>
+              <div class="card-description">
+                <h3><%= room.instrument_type %> in <%= room.location%></h3>
+                <p>Host: <%= User.find(room.user_id).first_name %></p>
+                <p>Location: <%= room.location %></p>
+                <p>Rental price: <%= room.currency %> <%= room.price %>/hr</p>
+              </div>
             </div>
-
-            <div class="card-links">
-              <%= link_to "More info", room_path(room), class: "btn btn-card" %>
-              <%= link_to "Book", new_room_booking_path(room), class: "btn btn-card" %>
-            </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
     </div>

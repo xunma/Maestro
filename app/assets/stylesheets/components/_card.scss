@@ -1,28 +1,29 @@
 .card {
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-position: center;
   color: rgba(0,0,0,0.8);
   background-color: white;
-  border-radius: 2px;
+  border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   margin: 20px 0;
   max-height: 600px;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 0.6;
+  }
   .picture {
     height: 250px;
     background-size: cover;
     background-position: center;
+    border-radius: 4px;
   }
   .card-description {
-    padding: 10px 10px 0 20px;
+    padding: 20px 20px 20px 20px;
     h3 {
       margin-left: 0;
     }
     p {
       margin-bottom: 5px;
     }
-  }
-  .card-links {
-    padding: 0 0 10px 6px;
   }
 }
 .card-description h3 {
@@ -40,11 +41,12 @@
   text-shadow: none;
   font-size: 15px;
   padding-right: 15px;
-  color: $baby-blue;
+  color: $blue;
+  opacity: 0.7;
   font-weight: bold;
   text-align: left;
-  transition: background 0.3s ease;
+  transition: opacity 0.3s ease;
   &:hover {
-    color: $blue;
+    opacity: 1;
   }
 }
