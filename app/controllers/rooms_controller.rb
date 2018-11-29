@@ -5,6 +5,8 @@ class RoomsController < ApplicationController
   def index
     if params[:room].nil?
       @rooms = Room.all
+    elsif params[:room][:instrument_type] == "" && params[:room][:location] == ""
+      @rooms = Room.all
     elsif params[:room][:instrument_type] != "" && params[:room][:location] != ""
       sql_query = "instrument_type ILIKE :instrument_type AND location ILIKE :location"
       @rooms = Room.where(sql_query, instrument_type: "#{params[:room][:instrument_type]}", location: "#{params[:room][:location]}")
@@ -15,14 +17,15 @@ class RoomsController < ApplicationController
       sql_query = "location ILIKE :location"
       @rooms = Room.where(sql_query, location: "#{params[:room][:location]}")
     end
-    @map_rooms = @rooms.where.not(latitude: nil).where.not(longitude: nil)
-
-    @markers = @map_rooms.map do |room|
-      {
-        lng: room.longitude,
-        lat: room.latitude,
-        infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { room: room }) }
-      }
+    unless @rooms.nil?
+      @map_rooms = @rooms.where.not(latitude: nil).where.not(longitude: nil)
+      @markers = @map_rooms.map do |room|
+        {
+          lng: room.longitude,
+          lat: room.latitude,
+          infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { room: room }) }
+        }
+      end
     end
   end
 
