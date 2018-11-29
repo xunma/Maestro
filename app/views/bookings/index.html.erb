@@ -21,8 +21,6 @@
             <div class="card-description">
               <h3><%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
               <p>Location: <%= booking.room.location %></p>
-              <p>Start time: <%= booking.start_time.strftime("%b %e, %l:%M %p") %></p>
-              <p>End time: <%= booking.end_time.strftime("%b %e, %l:%M %p") %></p>
               <p>Rental price:
               <% if ['Shanghai', 'Chengdu', 'Beijing'].include?(booking.room.location) %>
                   ¥
@@ -67,8 +65,6 @@
               <h3><%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
               <p>Host: <%= User.find(booking.room.user_id).first_name %></p>
               <p>Location: <%= booking.room.location %></p>
-              <p>Start time: <%= booking.start_time.strftime("%b %e, %l:%M %p") %></p>
-              <p>End time: <%= booking.end_time.strftime("%b %e, %l:%M %p") %></p>
               <p>Rental price:
               <% if ['Shanghai', 'Chengdu', 'Beijing'].include?(booking.room.location) %>
                   ¥
