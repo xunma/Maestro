@@ -23,6 +23,14 @@ if (mapElement) { // only build a map if there's a div#map to inject into
       .addTo(map);
   });
 
+  document.querySelectorAll(".mapboxgl-marker").forEach((element) => {
+    element.addEventListener("dblclick", (event) => {
+      console.log(element.toGeoJSON());
+      map.setZoom(14);
+      map.setCenter([element.lng, element.lat])
+    })
+  });
+
   if (markers.length === 0) {
     map.setZoom(1);
   } else if (markers.length === 1) {

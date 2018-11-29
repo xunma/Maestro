@@ -125,3 +125,8 @@ p {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown-l:hover .dropbtn {background-color: purple;}
 
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
