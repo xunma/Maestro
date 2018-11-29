@@ -16,19 +16,17 @@ if (mapElement) { // only build a map if there's a div#map to inject into
   const markers = JSON.parse(mapElement.dataset.markers);
 
   markers.forEach((marker) => {
+    const card = document.getElementById(marker.lng);
     new mapboxgl.Marker()
       .setLngLat([marker.lng, marker.lat])
       .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
       .setHTML(marker.infoWindow.content))
-      .addTo(map);
-  });
-
-  document.querySelectorAll(".mapboxgl-marker").forEach((element) => {
-    element.addEventListener("dblclick", (event) => {
-      console.log(element.toGeoJSON());
-      map.setZoom(14);
-      map.setCenter([element.lng, element.lat])
-    })
+      .addTo(map)
+      .getElement().addEventListener("dblclick", (event) => {
+        map.setZoom(10);
+        map.setCenter([marker.lng, marker.lat]);
+        card.classList.add("hovered");
+      })
   });
 
   if (markers.length === 0) {
@@ -55,4 +53,3 @@ if (mapElement) { // only build a map if there's a div#map to inject into
       container: addressInput
     });
   }
-
