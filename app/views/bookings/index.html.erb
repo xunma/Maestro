@@ -83,11 +83,11 @@
               <p>Host: <%= User.find(booking.room.user_id).first_name %></p>
               <p>Location: <%= booking.room.location %></p>
               <p>Rental price:
-              <% if ['Shanghai', 'Chengdu', 'Beijing'].include?(booking.room.location) %>
+              <% if booking.room.currency == 'Chinese Yuan' %>
                   ¥
-              <% elsif booking.room.location == 'Hong Kong' %>
+              <% elsif booking.room.currency == 'HK Dollar' %>
                   HK$
-              <% elsif booking.room.location == 'Seoul' %>
+              <% elsif booking.room.currency == 'Won' %>
                   ₩
               <% else %>
                   €
