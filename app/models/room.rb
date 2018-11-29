@@ -10,4 +10,16 @@ class Room < ApplicationRecord
   accepts_nested_attributes_for :room_images
   has_many :bookings, dependent: :destroy
   belongs_to :user
+
+  def currency
+    if ['Shanghai', 'Chengdu', 'Beijing'].include?(self.location)
+      '¥'
+    elsif self.location == 'Hong Kong'
+      'HK$'
+    elsif self.location == 'Seoul'
+      '₩'
+    else
+      '€'
+    end
+  end
 end
