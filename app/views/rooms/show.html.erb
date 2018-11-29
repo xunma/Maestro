@@ -15,15 +15,14 @@
   </div>
 
 <div class="container">
-  <p>You should <%= link_to '👉Upload an image', edit_room_path(@room) %></p>
   <% end %>
-  <h1>Your <%= @room.instrument_type %> in <%= @room.location %></h1><br>
-  <%= @room.description %><br>
+  <h1>Your <%= @room.instrument_type %> in <%= @room.location %></h1>
+  <br>Space's description: <%= @room.description %><br>
   <h4><i class="fas fa-map-marker-alt"></i> <%= @room.location %></h4><br>
-  <h4>Price: <%= @room.price %>/hour(<%= @room.currency %>)</h4><br>
-  <%= link_to "Book", new_room_booking_path(@room) %><br>
-  <%= link_to 'Edit', edit_room_path(@room) %><br>
-  <%= link_to 'Delete', method: :delete %><br>
+
+  <%= link_to "Book", new_room_booking_path(@room), class: "btn btn-card" %>
+  <h4>Price: <%= @room.price %> <%= @room.currency %> per hour</h4><br>
+
   <%= link_to '< Back home', rooms_path %>
 </div>
 
