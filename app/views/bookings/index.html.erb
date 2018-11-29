@@ -37,6 +37,7 @@
 
             <div class="card-links">
               <%= link_to "More info", booking_path(booking), class: "btn btn-card" %>
+              <%= link_to 'Accept', booking_path(booking, status: 'Accepted'), method: :patch %>
             </div>
           </div>
         </div>
