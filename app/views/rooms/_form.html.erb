@@ -1,29 +1,33 @@
-<%= simple_form_for(@room) do |f| %>
+<div class="form-container">
+  <%= simple_form_for(@room) do |f| %>
+    <div class="form-content">
+      <div class="form-row form-group">
+        <%= f.input :instrument_type, collection:['Piano', 'Drums', 'Harp', 'Cello', 'Guitar'] %>
+      </div>
+      <div class="form-row form-group">
+        <%= f.input :description %>
+      </div>
+      <div class="form-row form-group">
+        <%= f.input :location, label: "City", collection:['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'] %>
+      </div>
+      <div class="form-row form-group">
+        <%= f.input :address %>
+      </div>
+      <div class="form-row form-group col-md-6">
+        <%= f.input :price, label: "Price per hour"%>
+      </div>
+      <div class="form-row form-group col-md-6">
+        <%= f.input :currency, collection:['Euros', 'HK Dollars', 'Chinese Yuan', 'Won'] %>
+      </div>
+      <div class="form-row form-group">
+        <%= f.file_field :image, multiple: true %>
+      </div>
 
-<div >
-<div class="form-row form-group">
-  <%= f.input :instrument_type, collection:['Piano', 'Drums', 'Harp', 'Cello', 'Guitar'] %>
-</div>
-<div class="form-row form-group">
-  <%= f.input :description %>
-</div>
-<div class="form-row form-group">
-  <%= f.input :location, label: "city", collection:['Shanghai', 'Seoul', 'Chengdu', 'Beijing', 'Hong Kong', 'Barcelona'] %>
-</div>
-<div class="form-row form-group">
-  <%= f.input :address %>
-</div>
-<div class="form-row form-group col-md-6">
-  <%= f.input :price, label: "Price per hour"%>
-</div>
-<div class="form-row form-group col-md-6">
-  <%= f.input :currency, collection:['Euros', 'HK Dollars', 'Chinese Yuan', 'Won'] %>
-</div>
-<div class="form-row form-group">
-  <%= f.file_field :image, multiple: true %>
-</div>
+      <%= f.button :submit, 'Save', class: "btn btn-primary home-button" %>
+    </div>
+  <% end %>
 
-  <%= f.button :submit, 'Save', class: "btn btn-primary home-button" %>
-
+  <div class="form-image">
+    <%= image_tag "instruments.png", height: '577', width: '410' %>
+  </div>
 </div>
-<% end %>
