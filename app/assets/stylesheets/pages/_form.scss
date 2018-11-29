@@ -18,12 +18,25 @@
 
 }
 
-.container-log_in {
-  color: white;
-  font-family: 'Roboto Slab', serif;
+.container-login {
 }
 
-.banner-log_in {
+.card-login {
+  background-position: center;
+  color: rgba(0,0,0,1);
+  background-color: rgba(255,255,255,.9);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  margin: 20px 0;
+  max-height: 600px;
+  transition: opacity 0.3s ease;
+  border: blue;
+  border-width: 1px;
+  padding-top: 20px;
+  margin-top: 100px;
+}
+
+.banner-login {
   background-size: cover;
   height: 730px;
 }
@@ -32,19 +45,16 @@
   max-width: 250px;
   margin-left: auto;
   margin-right: auto;
+  font-family: Raleway, Helvetica, sans-serif;
 }
 
 .log-title {
-  font-family: 'Roboto Slab', serif;
-  color: white;
   text-decoration: overline wavy blue;
   text-align: center;
-  font-size: 35px;
-  margin-top: 223px;
-
+  font-weight: bold
 }
 
-.btn-log_in {
+.btn-login {
   text-align: center;
   color: white;
   border-radius: 5px;
@@ -67,9 +77,79 @@
 }
 
 .signup-btn {
-  color: white;
+  color: black;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
 }
 
 .forgot-btn {
+  color: black;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+}
+
+.remember {
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+}
+
+// staring on sign up page css
+
+.card-signup {
+  background-position: center;
+  color: rgba(0,0,0,1);
+  background-color: rgba(255,255,255,.9);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  margin: 20px 0;
+  max-height: 600px;
+  transition: opacity 0.3s ease;
+  border: blue;
+  border-width: 1px;
+  padding-top: 20px;
+  margin-top: 100px;
+}
+
+.banner-signup {
+  background-size: cover;
+  height: 730px;
+}
+
+.btn-signup {
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+  text-align: center;
   color: white;
+  border-radius: 5px;
+  font-size: 20px;
+  background: $blue;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  margin-bottom: 2px;
+  border: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-signup:hover {
+  background: $purple;
+  text-decoration: none;
+  color: white;
+  transition: background 0.5s ease;
+}
+
+.sign-title {
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+  text-decoration: overline wavy blue;
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-signup {
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+}
+
+.login-btn {
+  color: black;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
 }
