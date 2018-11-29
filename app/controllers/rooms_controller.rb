@@ -17,8 +17,10 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     @room.user = current_user
     if @room.save
-      params[:room][:image].each do |i|
-        @room.room_images.create(image: i)
+      if params[:room][:image]
+        params[:room][:image].each do |i|
+          @room.room_images.create(image: i)
+        end
       end
       redirect_to room_path(@room), notice: 'Room successfully created.'
     else
