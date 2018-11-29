@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :rooms do
-    collection do
-      get 'search'
-    end
-
     member do
       get 'bookings', to: 'rooms#bookings'
     end

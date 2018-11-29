@@ -3,7 +3,27 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy, :bookings]
 
   def index
-    @rooms = Room.all
+    if params[:room].nil?
+      @rooms = Room.all
+    elsif params[:room][:instrument_type] != "" && params[:room][:location] != ""
+      sql_query = "instrument_type ILIKE :instrument_type AND location ILIKE :location"
+      @rooms = Room.where(sql_query, instrument_type: "#{params[:room][:instrument_type]}", location: "#{params[:room][:location]}")
+    elsif params[:room][:instrument_type] != ""
+      sql_query = "instrument_type ILIKE :instrument_type"
+      @rooms = Room.where(sql_query, instrument_type: "#{params[:room][:instrument_type]}")
+    elsif params[:room][:location] != ""
+      sql_query = "location ILIKE :location"
+      @rooms = Room.where(sql_query, location: "#{params[:room][:location]}")
+    end
+    @map_rooms = @rooms.where.not(latitude: nil).where.not(longitude: nil)
+
+    @markers = @map_rooms.map do |room|
+      {
+        lng: room.longitude,
+        lat: room.latitude,
+        infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { room: room }) }
+      }
+    end
   end
 
   def show
@@ -51,28 +71,6 @@ class RoomsController < ApplicationController
 
   def myrooms
     @myrooms = Room.where(user_id: current_user.id)
-  end
-
-  def search
-    @rooms = []
-    Room.where(instrument_type: room_params[:instrument_type]).each do |room|
-      @rooms << room
-    end
-    Room.where(location: room_params[:location]).each do |room|
-      @rooms << room
-    end
-    @map_rooms = []
-    @rooms.each do |room|
-      @map_rooms << room if room.latitude != nil && room.longitude != nil
-    end
-
-    @markers = @map_rooms.map do |room|
-      {
-        lng: room.longitude,
-        lat: room.latitude,
-        infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { room: room }) }
-      }
-    end
   end
 
   def bookings
