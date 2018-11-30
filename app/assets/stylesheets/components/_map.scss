@@ -51,6 +51,8 @@
   .picture {
     height: 100px;
     background-position: center;
+    background-image: fill;
+    background-size: cover;
   }
   a {
     font-weight: bold;
