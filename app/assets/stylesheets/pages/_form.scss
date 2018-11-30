@@ -6,8 +6,6 @@
 
 .form-container {
   display: flex;
-
-
 }
 
 .form-content {
@@ -147,6 +145,24 @@
   margin-left: auto;
   margin-right: auto;
   font-family: "Open Sans", "Helvetica", "sans-serif";
+}
+
+.form-row {
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+}
+
+.new-room {
+  margin-top: 60px !important;
+  padding: 20px !important;
+  min-height: 625 !important;
+}
+
+.edit-room {
+  margin-top: 60px !important;
+  min-height: 625px !important;
 }
 
 .login-btn {
