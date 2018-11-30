@@ -22,7 +22,7 @@
       </div>
 
       <div class="content">
-        <p><strong>Host: </strong> <%= @room.user.first_name + @room.user.last_name %></p>
+        <p><strong>Host: </strong> <%= @room.user.first_name %> <%= @room.user.last_name %></p>
         <p><strong>Address: </strong> <%= @room.address %></p>
         <p><%= @room.description %></p>
         <p><strong>Price: </strong><%= @room.price %> <%= @room.currency %> per hour</p>
