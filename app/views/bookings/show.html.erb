@@ -7,7 +7,12 @@
 <% end %>
 
 <div class="container">
-  <h3><%= @booking.user.first_name %> will play the <%= @booking.room.instrument_type %> and <%= @booking.room.user.first_name %>'s house</h3>
+  <% if @booking.user.first_name %>
+    <h3><%= @booking.user.first_name %>, you will play the <%= @booking.room.instrument_type %> at <%= @booking.room.user.first_name %>'s house</h3>
+  <% else %>
+    <h3> You will play the <%= @booking.room.instrument_type %> at <%= @booking.room.user.first_name %>'s house</h3>
+  <% end %>
+
   <p>Location: <%= @booking.room.location %></p>
   <p>Start time: <%= @booking.start_time.strftime("%b %e, %l:%M %p") %></p>
   <p>End time: <%= @booking.end_time.strftime("%b %e, %l:%M %p") %></p>

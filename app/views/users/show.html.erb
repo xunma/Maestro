@@ -11,7 +11,9 @@
          <%= image_tag "profile.png", height: '80', width: '80', class: "profile-icon" %>
       <% end %>
       <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+      <% if @user.city %>
       <p><i class="fas fa-map-pin"></i> <%= @user.city %><br>
+      <% end %>
      <i class="fas fa-envelope"></i> <%= @user.email %></p>
       <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary btn-profile" %>
     </div>
