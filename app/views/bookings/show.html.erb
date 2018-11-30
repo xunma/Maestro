@@ -31,6 +31,7 @@
         <p><strong>Start time: </strong> <%= @booking.start_time.strftime("%b %e, %l:%M %p") %></p>
         <p><strong>End time: </strong><%= @booking.end_time.strftime("%b %e, %l:%M %p") %></p>
         <p><strong>Total cost: </strong><%= @booking.room.currency %> <%= @booking.cost %> </p>
+        <p><strong>Status: </strong><%= @booking.status.capitalize %></p>
       </div>
       <div class="links">
         <%= link_to booking_path(@booking),
