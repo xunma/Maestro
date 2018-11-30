@@ -1,5 +1,12 @@
 
 .profile {
+  h2 {
+    color: black;
+  }
+  p {
+    color: black;
+  }
+
   .profile-image {
     border-radius: 50px;
   }
@@ -35,7 +42,7 @@
 }
 
 .btn-profile:hover {
-  background: pink;
+  background: rgb(45, 225, 207);
   text-decoration: none;
   color: white;
   transition: background 0.5s ease;
