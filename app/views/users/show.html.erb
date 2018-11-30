@@ -1,18 +1,18 @@
 <div class="profile" style="background-image: linear-gradient(rgba(254, 140, 199, 0.9), rgba(155, 154, 249,0.9))">
 
-  <div class="banner" style="background-image: url('<%=image_path 'background.png' %>');">
+  <div class="banner" style="background-image: url('<%=image_path 'ins.png' %>');">
 
 
     <div class="card-profile" style="background-image: linear-gradient(rgba(254, 140, 199, 1), rgba(155, 154, 249, 1))">
       <% if @user.avatar.url != nil %>
-        <%= cl_image_tag @user.avatar.url(:profile_image), height: '80', width: '80' %>
+        <%= cl_image_tag @user.avatar.url(:profile_image), height: '100', width: '100', class: "profile-image" %>
       <% else %>
          <%= image_tag "profile.png", height: '80', width: '80', class: "profile-icon" %>
       <% end %>
       <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-      <p><i class="fas fa-map-pin"></i> <%= @user.city %></p>
-      <p><i class="fas fa-envelope"></i> <%= @user.email %></p>
-      <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
+      <p><i class="fas fa-map-pin"></i> <%= @user.city %><br>
+     <i class="fas fa-envelope"></i> <%= @user.email %></p>
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary btn-profile" %>
     </div>
   </div>
 </div>

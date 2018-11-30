@@ -1,6 +1,9 @@
 
 .profile {
-  line-height: 0px;
+  .profile-image {
+    border-radius: 50px;
+  }
+
 
   .fas{
     color: #767bf7;
@@ -16,3 +19,26 @@
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
   margin-left: -600px
 }
+
+
+.btn-profile {
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  background: $purple;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  margin-bottom: 2px;
+  border: none;
+  width: 200px;
+}
+
+.btn-profile:hover {
+  background: pink;
+  text-decoration: none;
+  color: white;
+  transition: background 0.5s ease;
+}
+
+
