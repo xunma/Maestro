@@ -66,4 +66,13 @@
     }
   }
 }
-
+.map-showpage {
+  position: relative;
+  width: 40%;
+  height: 100vh !important;
+  position: sticky !important;
+  #map {
+    position: sticky !important;
+    flex: 0 0 auto;
+  }
+}
