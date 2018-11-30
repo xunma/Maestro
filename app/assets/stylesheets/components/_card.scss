@@ -19,14 +19,35 @@
     background-size: cover;
     background-position: center;
     border-radius: 4px;
+    .status-box {
+      background-color: white;
+      min-width: 50px;
+      padding: 10px;
+      border-radius: 4px 4px 0 0;
+      opacity: 0.8;
+      margin-left: 0;
+      display: flex !important;
+      justify-content: space-between !important;
+      h4 {
+        font-size: 18px;
+        margin: 0;
+        color: rgba(0,0,0,0.8) !important;
+      }
+      p {
+        margin: 0;
+      }
+    }
+
   }
   .card-description {
     padding: 20px 20px 20px 20px;
     h3 {
       margin-left: 0;
+      color: rgba(0,0,0,0.8) !important;
     }
     p {
       margin-bottom: 5px;
+      color: rgba(0,0,0,0.8) !important;
     }
   }
 }

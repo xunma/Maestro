@@ -24,17 +24,7 @@
               <div class="card-description">
                 <h3><%= room.instrument_type %> in <%= room.location%></h3>
                 <p>Location: <%= room.location %></p>
-                <p>Rental price:
-                <% if ['Shanghai', 'Chengdu', 'Beijing'].include?(room.location) %>
-                  ¥
-                <% elsif room.location == 'Hong Kong' %>
-                  HK$
-                <% elsif room.location == 'Seoul' %>
-                  ₩
-                <% else %>
-                  €
-                <% end %>
-                 <%= room.price %>/hr</p>
+                <p>Rental price: <%= room.currency %><%= room.price %>/hr</p>
               </div>
 
               <div class="card-links">

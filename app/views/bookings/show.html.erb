@@ -1,29 +1,46 @@
-<% if @booking.room.room_images.count > 0 %>
-  <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(@booking.room.room_images[0].image) %>);">
-  </div>
-<% else %>
-  <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
-  </div>
-<% end %>
+  <% if @booking.room.room_images.count > 0 %>
+    <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(@booking.room.room_images[0].image) %>);">
+    </div>
+  <% else %>
+    <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
+    </div>
+  <% end %>
 
-<div class="container">
-  <h3><%= @booking.user.first_name %> will play the <%= @booking.room.instrument_type %> and <%= @booking.room.user.first_name %>'s house</h3>
-  <p>Location: <%= @booking.room.location %></p>
-  <p>Start time: <%= @booking.start_time.strftime("%b %e, %l:%M %p") %></p>
-  <p>End time: <%= @booking.end_time.strftime("%b %e, %l:%M %p") %></p>
-  <p>Rental price:
-    <% if ['Shanghai', 'Chengdu', 'Beijing'].include?(@booking.room.location) %>
-      ¥
-    <% elsif @booking.room.location == 'Hong Kong' %>
-      HK$
-    <% elsif @booking.room.location == 'Seoul' %>
-      ₩
-    <% else %>
-      €
-    <% end %>
-  <%= @booking.room.price %>/hr</p>
-  <%= link_to "Delete booking?", booking_path(@booking),
-      method: :delete,
-      data: { confirm: "Are you sure you want to delete?" } %><br>
-  <%= link_to "Back to Dashboard", bookings_path %>
-</div>
+  <div class="container show-container">
+    <div class="show-box">
+      <div class="title-box">
+        <h3>Rehearsal at <%= @booking.room.user.first_name %>'s house</h3>
+      </div>
+      <div class="image-box">
+        <div class="show-image">
+          <strong>Host</strong>
+          <%= link_to profile_path(@booking.room.user) do %>
+            <%= cl_image_tag @booking.room.user.avatar.url(:profile_image), height: '100', width: '100', class: "profile-image" %>
+          <% end %>
+        </div>
+        <div class="show-image">
+          <strong>Musician</strong>
+          <%= link_to profile_path(@booking.user) do %>
+            <%= cl_image_tag @booking.user.avatar.url(:profile_image), height: '100', width: '100', class: "profile-image" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="content">
+        <p><strong>Host: </strong> <%= @booking.room.user.first_name + @booking.room.user.last_name %></p>
+        <p><strong>Address: </strong> <%= @booking.room.address %></p>
+        <p><strong>Start time: </strong> <%= @booking.start_time.strftime("%b %e, %l:%M %p") %></p>
+        <p><strong>End time: </strong><%= @booking.end_time.strftime("%b %e, %l:%M %p") %></p>
+        <p><strong>Total cost: </strong><%= @booking.room.currency %> <%= @booking.cost %> </p>
+      </div>
+      <div class="links">
+        <%= link_to booking_path(@booking),
+            method: :delete,
+            data: { confirm: "Are you sure you want to cancel this booking?" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <%= link_to bookings_path do %>
+          <i class="fas fa-undo-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
