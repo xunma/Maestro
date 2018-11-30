@@ -53,16 +53,16 @@
   border-color: #E6E6E6;
 }
 .navbar-wagon-dropdown-menu li > a {
-  transition: color 0.3s ease;
-  font-weight: lighter !important;
-  color: #999999 !important;
+  transition: opacity 0.3s ease;
+  color: #616668 !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: black !important;
+  opacity: 0.4 !important;
+  color: #0000b3 !important;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';

@@ -2,58 +2,66 @@
   <div class="dashboard-main-header">
     <h1>Dashboard</h1>
   </div>
+
   <div class="dashboard-subheading">
     <h3>Rehearsals where I am the host:</h3>
-
     <% if @my_hostings.count > 0 %>
-
     <div class="row">
       <% @my_hostings.each do |booking| %>
         <div class="col-xs-6 col-sm-4">
-          <div class="card">
-            <% if booking.room.room_images.count > 0 %>
-              <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(booking.room.room_images[0].image) %>);">
-              </div>
-            <% else %>
-              <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
-              </div>
+          <%= link_to booking_path(booking) do %>
+            <div class="card">
 
-            <% end %>
+              <% if booking.room.room_images.count > 0 %>
 
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(booking.room.room_images[0].image) %>);">
+                  <div class="status-box">
+                    <h4 style="color: <%= booking.color %> !important">Status: <%= booking.status.capitalize %></h4>
+                    <div class="card-links">
+                      <% if booking.status == 'pending' %>
 
-            <div class="card-description">
-              <h3><%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
-              <p>Location: <%= booking.room.location %></p>
-              <p>Rental price:
-              <% if ['Shanghai', 'Chengdu', 'Beijing'].include?(booking.room.location) %>
-                  ¥
-              <% elsif booking.room.location == 'Hong Kong' %>
-                  HK$
-              <% elsif booking.room.location == 'Seoul' %>
-                  ₩
+                        <%= link_to 'Accept', booking_path(booking, status: 'accepted'), method: :patch %>
+                        <%= link_to 'Decline', booking_path(booking, status: 'declined'), method: :patch %>
+
+                      <% elsif booking.status == 'accepted' %>
+                        <p></p>
+                      <% else %>
+                        <p></p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+
               <% else %>
-                  €
+
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
+                  <div class="status-box">
+                    <h4 style="color: <%= booking.color %> !important">Status: <%= booking.status.capitalize %></h4>
+                    <div class="card-links">
+                      <% if booking.status == 'pending' %>
+
+                        <%= link_to 'Accept', booking_path(booking, status: 'accepted'), method: :patch %>
+                        <%= link_to 'Decline', booking_path(booking, status: 'declined'), method: :patch %>
+
+                        <% elsif booking.status == 'accepted' %>
+                        <p></p>
+                        <% else %>
+                        <p></p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
               <% end %>
-                <%= booking.room.price %>/hr</p>
-            </div>
 
-            <div class="card-links">
-              <%= link_to "More info", booking_path(booking), class: "btn btn-card" %>
-              <% if booking.status == 'pending' %>
-
-                <%= link_to 'Accept', booking_path(booking, status: 'accepted'), method: :patch %>
-                <%= link_to 'Decline', booking_path(booking, status: 'declined'), method: :patch %>
-
-                <% elsif booking.status == 'accepted' %>
-                <p>You accepted <%= booking.user.first_name %>'s booking</p>
-                <% else %>
-                <p>You declined <%= booking.user.first_name %>'s booking</p>
-                <% end %>
-
-
+              <div class="card-description">
+                <h3><%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
+                <p>Location: <%= booking.room.location %></p>
+                <p>Rental price: <%= booking.room.currency %>
+                  <%= booking.room.price %>/hr</p>
+              </div>
 
             </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -68,37 +76,31 @@
     <div class="row">
       <% @my_bookings.each do |booking| %>
         <div class="col-xs-6 col-sm-4">
-          <div class="card">
-            <% if booking.room.room_images.count > 0 %>
-              <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(booking.room.room_images[0].image) %>);">
-              </div>
-            <% else %>
-              <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
-              </div>
-            <% end %>
-
-            <div class="card-description">
-              <%= booking.status.capitalize %>
-              <h3><%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
-              <p>Host: <%= User.find(booking.room.user_id).first_name %></p>
-              <p>Location: <%= booking.room.location %></p>
-              <p>Rental price:
-              <% if booking.room.currency == 'Chinese Yuan' %>
-                  ¥
-              <% elsif booking.room.currency == 'HK Dollar' %>
-                  HK$
-              <% elsif booking.room.currency == 'Won' %>
-                  ₩
+          <%= link_to booking_path(booking) do %>
+            <div class="card">
+              <% if booking.room.room_images.count > 0 %>
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(booking.room.room_images[0].image) %>);">
+                  <div class="status-box">
+                    <h4 style="color: <%= booking.color %> !important">Status: <%= booking.status.capitalize %></h4>
+                  </div>
+                </div>
               <% else %>
-                  €
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
+                  <div class="status-box">
+                    <h4 style="color: <%= booking.color %> !important">Status: <%= booking.status.capitalize %></h4>
+                  </div>
+                </div>
               <% end %>
-                <%= booking.room.price %>/hr</p>
-            </div>
 
-            <div class="card-links">
-              <%= link_to "More info", booking_path(booking), class: "btn btn-card" %>
+              <div class="card-description">
+                <h3><%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
+                <p>Host: <%= User.find(booking.room.user_id).first_name %></p>
+                <p>Location: <%= booking.room.location %></p>
+                <p>Rental price: <%= booking.room.currency %>
+                  <%= booking.room.price %>/hr</p>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
     </div>
