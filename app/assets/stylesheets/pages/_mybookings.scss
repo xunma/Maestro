@@ -1,0 +1,82 @@
+.mybookings{
+    h1 {
+      margin-top: 30px;
+      color: white;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+    }
+  .mybookings-subheading {
+
+
+      margin-top: 30px;
+      margin-bottom: 30px;
+      color: white;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+  }
+}
+
+.btn-mybooking {
+  color: white;
+  border-radius: 10px;
+  font-size: 17px;
+  background: $purple;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  margin-bottom: 10px;
+  border: none;
+  width: 83px;
+  margin-left: 15px;
+  height: 40px;
+
+
+}
+
+.accept:hover {
+  background: $green;
+  text-decoration: none;
+
+  transition: background 0.2s ease;
+
+}
+
+.accept {
+  margin-left: 20px;
+}
+.decline:hover {
+  background: $red;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+}
+
+.card-mybooking {
+   width: 350px;
+   height: 450px;
+   margin-left: 15px;
+    .fa-spinner {
+    color: $blue;
+
+  }
+  .fa-check {
+    color: $green;
+  }
+
+  .fa-times {
+    color: $red;
+  }
+   .card-links {
+    padding: 20px;
+  }
+}
+
+.booking-description{
+
+
+}
+
+.booking-status {
+   margin-top: 30px;
+  color: white;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+  margin-bottom: 100px;
+
+}

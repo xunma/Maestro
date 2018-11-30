@@ -4,9 +4,9 @@
 }
 
 .dashboard.container {
-  background-color: $grey-blue;
+  // background-color: $grey-blue;
   width: auto;
-  height: 100vh;
+  // height: 100vh;
   margin-left: 0;
   margin-right: 0;
 }
@@ -46,6 +46,13 @@
       margin-bottom: 30px;
       color: white;
       text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+    }
+
+    h4 {
+           margin-top: 30px;
+      color: white;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+
     }
 
   }
