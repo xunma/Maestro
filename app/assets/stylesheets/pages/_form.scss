@@ -6,6 +6,8 @@
 
 .form-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-content {
@@ -156,8 +158,19 @@
 
 .new-room {
   margin-top: 60px !important;
-  padding: 20px !important;
-  min-height: 625 !important;
+  padding: 30px !important;
+  min-width: 450px !important;
+  min-height: 630px !important;
+}
+
+.left-input {
+  float: left;
+  width: 50%;
+}
+
+.right-input {
+  float: right;
+  width: 50%;
 }
 
 .edit-room {

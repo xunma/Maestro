@@ -13,11 +13,19 @@
       <div class="form-row form-group">
         <%= f.input :address %>
       </div>
-      <div class="form-row form-group col-md-6">
-        <%= f.input :price, label: "Price per hour"%>
-      </div>
-      <div class="form-row form-group col-md-6">
+      <div class="form-row form-group ">
+        <div class="left-input">
+
+        <%= f.input :price, label: "Price /hour"%>
+        </div>
+        <div class="right-input">
         <%= f.input :currency, collection:['Euro', 'HK Dollar', 'Chinese Yuan', 'Won'] %>
+
+        </div>
+<!--         <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+      </div> -->
       </div>
       <div class="form-row form-group">
         <%= f.file_field :image, multiple: true %>

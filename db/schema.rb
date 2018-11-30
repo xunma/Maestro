@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2018_11_28_114849) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "room_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.date "start_time"
+    t.date "end_time"
     t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
