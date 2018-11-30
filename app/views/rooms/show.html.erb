@@ -1,39 +1,58 @@
-<div class="container">
-  <% if @room.room_images.count > 0 %>
-    <div class="row">
-      <% @room.room_images.each do |image| %>
-        <div class="col-xs-4">
-          <%= cl_image_tag(image.image,
-        width: 400, height: 300, crop: :fill) %>
-          <% if @room.user == current_user %>
-            <%= link_to 'Delete Image', room_room_image_path(@room, image), method: :delete %>
+<div class="whole-page-box">
+
+  <div class="container room-container">
+    <% if @room.room_images.count > 0 %>
+      <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(@room.room_images[0].image) %>);">
+      </div>
+    <% else %>
+      <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
+      </div>
+    <% end %>
+    <div class="show-box show-box-room">
+      <div class="image-box">
+        <div class="show-image">
+          <%= link_to profile_path(@room.user) do %>
+            <%= cl_image_tag @room.user.avatar.url(:profile_image), height: '100', width: '100', class: "profile-image" %>
           <% end %>
         </div>
-      <% end %>
+      </div>
+
+      <div class="title-box">
+        <h1><%= @room.user.first_name %>'s <%= @room.instrument_type %> in <%= @room.location %></h1>
+      </div>
+
+      <div class="content">
+        <p><strong>Host: </strong> <%= @room.user.first_name + @room.user.last_name %></p>
+        <p><strong>Address: </strong> <%= @room.address %></p>
+        <p><%= @room.description %></p>
+        <p><strong>Price: </strong><%= @room.price %> <%= @room.currency %> per hour</p>
+      </div>
+      <div class="links">
+        <% if @room.user == current_user %>
+          <%= link_to edit_room_path(@room) do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to room_path(@room),
+            method: :delete,
+            data: { confirm: "Are you sure you want to delete this room?" } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% else %>
+          <%= link_to "Book", new_room_booking_path(@room), class: "btn btn-home btn-myroom" %>
+        <% end %>
+        <%= link_to bookings_path do %>
+          <i class="fas fa-undo-alt"></i>
+        <% end %>
+      </div>
     </div>
-  <% else %>
-    <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
-    </div>
-      <% if @room.user == current_user %>
-        <%= link_to "Upload an image", edit_room_path(@room) %>
-      <% end %>
-  <% end %>
-
-  <div class="container">
-    <h1>Your <%= @room.instrument_type %> in <%= @room.location %></h1>
-    <br>Space's description: <%= @room.description %><br>
-    <h4><i class="fas fa-map-marker-alt"></i> <%= @room.location %></h4><br>
-
-    <% if @room.user == current_user %>
-      <%= link_to "Edit", edit_room_path(@room), class: "btn btn-card" %>
-      <%= link_to "Delete", method: :delete, class: "btn btn-card" %>
-    <% else %>
-      <%= link_to "Book", new_room_booking_path(@room), class: "btn btn-card" %>
-    <% end %>
-
-    <h4>Price: <%= @room.price %> <%= @room.currency %> per hour</h4><br>
-
-    <%= link_to '< Back home', rooms_path %>
   </div>
+
+    <div
+      id="map"
+      style="width: 100%;
+      height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 
 </div>

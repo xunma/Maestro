@@ -30,6 +30,11 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @markers = [{
+      lng: @room.longitude,
+      lat: @room.latitude,
+      infoWindow: { content: render_to_string(partial: "/rooms/map_window", locals: { room: @room }) }
+    }]
   end
 
   def new

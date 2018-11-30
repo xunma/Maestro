@@ -15,7 +15,9 @@
       <p><i class="fas fa-map-pin"></i> <%= @user.city %><br>
       <% end %>
      <i class="fas fa-envelope"></i> <%= @user.email %></p>
+     <% if @user == current_user %>
       <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary btn-profile" %>
+     <% end %>
     </div>
   </div>
 </div>

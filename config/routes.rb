@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index, :show, :destroy, :update]
 
-  get '/profile', to: 'users#show', as: 'profile'
+  get '/users/:id/profile', to: 'users#show', as: 'profile'
 
   get '/my_rooms', to: 'rooms#myrooms', as: 'my_rooms'
 

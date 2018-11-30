@@ -1,6 +1,5 @@
-
- <div class="profile" style="background-image: linear-gradient(145deg, rgba(45, 225, 207, 0.5), rgba(19, 123, 184, 0.6) )">
- <div style="background-image:  linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.0)), url('<%=image_path 'bg.png' %>');">
+<div class="profile" style="background-image: linear-gradient(145deg, rgba(45, 225, 207, 0.5), rgba(19, 123, 184, 0.6) )">
+<div style="background-image:  linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.0)), url('<%=image_path 'bg.png' %>');">
 <div class="dashboard myrooms">
   <div class="dashboard-main-header" >
 
@@ -19,39 +18,30 @@
     <div class="row">
         <% @myrooms.each do |room| %>
           <div class="col-xs-6 col-xs-offset-3">
-            <div class="card">
-              <% if room.room_images.count > 0 %>
-                <div class="picture" style="background-image:  url(<%= cl_image_path(room.room_images[0].image) %>);">
-                </div>
-              <% else %>
-                <div class="picture" style="background-image:url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
-                </div>
-              <% end %>
-
-              <div class="card-description">
-                <h3><%= room.instrument_type %> in <%= room.location%></h3>
-                <p>Location: <%= room.location %></p>
-                <p>Rental price:
-                <% if ['Shanghai', 'Chengdu', 'Beijing'].include?(room.location) %>
-                  ¥
-                <% elsif room.location == 'Hong Kong' %>
-                  HK$
-                <% elsif room.location == 'Seoul' %>
-                  ₩
+            <%= link_to room_path(room) do %>
+              <div class="card">
+                <% if room.room_images.count > 0 %>
+                  <div class="picture" style="background-image:  url(<%= cl_image_path(room.room_images[0].image) %>);">
+                  </div>
                 <% else %>
-                  €
+                  <div class="picture" style="background-image:url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
+                  </div>
                 <% end %>
-                 <%= room.price %>/hr</p>
-              </div>
 
-              <div class="card-links">
-                <%= link_to "More info", room_path(room), class: "btn btn-card" %>
-                <%= link_to "Edit", edit_room_path(room), class: "btn btn-card" %>
-                <%= link_to "Remove", room_path(room), class: "btn btn-card",
-                  method: :delete,
-                  data: { confirm: "Are you sure you want to delete?" } %>
+                <div class="card-description">
+                  <h3><%= room.instrument_type %> in <%= room.location%></h3>
+                  <p>Location: <%= room.location %></p>
+                  <p>Rental price: <%= room.currency %><%= room.price %>/hr</p>
+                </div>
+
+                <div class="card-links">
+                  <%= link_to "Edit", edit_room_path(room), class: "btn btn-card" %>
+                  <%= link_to "Remove", room_path(room), class: "btn btn-card",
+                    method: :delete,
+                    data: { confirm: "Are you sure you want to delete?" } %>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
 
