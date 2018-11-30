@@ -70,7 +70,29 @@
         color: #0000b3 !important;
       }
     }
+    .fa-edit {
+      margin-left: 5px;
+      margin-right: 23px;
+      color: #616668 !important;
+      transition: opacity color 0.3s ease;
+      &:hover {
+        opacity: 0.4 !important;
+        color: #0000b3 !important;
+      }
+    }
   }
 }
-
+.whole-page-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  .room-container {
+    padding: 0;
+    margin: 0;
+  }
+}
+.show-box-room {
+  margin-left: 50px !important;
+}
 
