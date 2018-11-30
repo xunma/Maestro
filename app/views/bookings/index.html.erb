@@ -103,7 +103,7 @@
                 <i class="fas fa-times"></i> <%= booking.status.capitalize %>
               <% end %>
 
-              <h3><%= booking.room.user.first_name %>'s <%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
+              <h3><%= booking.room.instrument_type %> in <%= booking.room.location %></h3>
               <p>Host: <%= User.find(booking.room.user_id).first_name %></p>
               <p>Location: <%= booking.room.location %></p>
               <p>Rental price:
